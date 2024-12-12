@@ -28,15 +28,19 @@ const prisma = new PrismaClient();
 const HomePage = async () => {
   const data = await prisma.kontak.findMany();
   return (
-    <div className="max-w-5xl mx-auto min-h-screen">
+    <div className="max-w-6xl mx-auto min-h-screen">
       <Drawer>
         <DrawerTrigger asChild>
-          <Button>Add Contact</Button>
+          <Button className="bg-red-500">Add Contact</Button>
         </DrawerTrigger>
-        <DrawerContent>
+        <DrawerContent className="max-w-6xl mx-auto ">
           <DrawerHeader>
-            <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-            <DrawerDescription>This action cannot be undone.</DrawerDescription>
+            <DrawerTitle className="text-center">
+              Are you absolutely sure?
+            </DrawerTitle>
+            <DrawerDescription className="text-center">
+              This action cannot be undone.
+            </DrawerDescription>
           </DrawerHeader>
           <Input type="text" placeholder="Nama" />
           <Input type="phone" placeholder="Telepon" />
@@ -50,25 +54,32 @@ const HomePage = async () => {
         </DrawerContent>
       </Drawer>
 
-      <Avatar>
-        <AvatarImage src="https://robohash.org/Kevin" className="bg-red-600" />
-        <AvatarFallback>IQ</AvatarFallback>
-      </Avatar>
+      <div className="py-5">
+        <Avatar>
+          <AvatarImage
+            src="https://robohash.org/Kevin"
+            className="bg-gray-600"
+          />
+          <AvatarFallback>CH</AvatarFallback>
+        </Avatar>
+      </div>
       <Table>
-        <TableCaption>Ini Tabel Kontak Saya</TableCaption>
+        <TableCaption className="text-red-300">
+          Ini Tabel Kontak Saya
+        </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>No</TableHead>
-            <TableHead>Nama</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>No Telepon</TableHead>
-            <TableHead>Action</TableHead>
+            <TableHead className="text-green-300">No</TableHead>
+            <TableHead className="text-green-300">Nama</TableHead>
+            <TableHead className="text-green-300">Email</TableHead>
+            <TableHead className="text-green-300">No Telepon</TableHead>
+            <TableHead className="text-green-300">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {data.map((user) => (
             <TableRow key={user.id}>
-              <TableCell>{user.id}</TableCell>
+              <TableCell className="text-red-500">{user.id}</TableCell>
               <TableCell>{user.nama}</TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell>{user.phone}</TableCell>
